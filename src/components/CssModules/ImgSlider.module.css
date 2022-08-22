@@ -1,0 +1,23 @@
+.buttons{
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    width: 56px;
+    height: 0;
+    transform: translate(125px,-35px);
+}
+.SliderButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px ;
+    background: rgba(0, 0, 0, 0.73);
+    color: white;
+    height: 24px;
+    width: 24px;
+
+}

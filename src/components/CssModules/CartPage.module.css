@@ -1,0 +1,238 @@
+    .Page{
+        margin-left: 40px;
+        font-family: 'Raleway';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 42px;
+    }
+    .ProductItem{
+        margin-top: 55px;
+        margin-right: 100px;
+        margin-left: 100px;
+        min-height: 336px;
+        border-bottom: 1px solid #E5E5E5;
+        border-top: 1px solid #E5E5E5;
+    }
+    .CartList{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+    }
+    .Title{
+        font-family: 'Raleway';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 30px;
+    }
+    .Brand{
+        font-family: 'Raleway';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 30px;
+    }
+    .Price {
+        font-family: 'Raleway';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 24px;
+    }
+    .Size{
+        margin-top: 8px;
+        font-family: 'Roboto Condensed';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+    }
+    .buttons{
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 45px;
+        height: 45px;
+        font-family: 'Source Sans Pro' sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 30px;
+        border: 1px solid black;
+    }
+    .ColorButtons{
+        height: 100%;
+        margin-top: 8px;
+        margin-bottom: 8px;
+        display: flex;
+        justify-content: left;
+    }
+    .Info{
+        width: 50%;
+        height: 100%;
+    }
+    .color{
+        margin: 0;
+        margin-right: 8px;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .size{
+        margin: 0px 8px 8px 8px;
+        width: 63px;
+        height: 45px;
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        border: 1px solid black;
+    }
+    .capacity{
+        margin: 0px 8px 8px 8px;
+        width: 63px;
+        height: 45px;
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        border: 1px solid black;
+    }
+    .activeCapacity{
+        margin: 0px 8px 8px 8px;
+        width: 63px;
+        height: 45px;
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        border: 1px solid black;
+        background-color: black;
+        color: white;
+    }
+    .activeColor{
+        margin: 0;
+        margin-right: 8px;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid #5ECE7B;
+    }
+    .activeSize{
+        margin: 0px 8px 8px 8px;
+        width: 63px;
+        height: 45px;
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        border: 1px solid black;
+        background-color: black;
+        color: white;
+    }
+    .activeAttribute{
+        margin: 0px 8px 8px 8px;
+        width: 63px;
+        height: 45px;
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        border: 1px solid black;
+        background-color: black;
+        color: white;
+    }
+    .attribute{
+        margin: 0px 8px 8px 8px;
+        font-family: 'Source Sans Pro';
+        width: 63px;
+        height: 45px;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        border: 1px solid black;
+    }
+    .TotalProduct{
+        height: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        margin: 10px;
+    }
+    .TotalButtons{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+        height: 100%;
+        margin-right: 42px;
+    }
+    .total{
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        margin: 0;
+        font-family: 'Raleway';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 24px;
+    }
+    .TotalPrice{
+        width: 279px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        margin-left: 100px ;
+        margin-bottom: 10px;
+    }
+    .TotalPrice h2{
+        font-family: 'Raleway';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+    }
+    .CheckOutInfo{
+        margin-top: 55px;
+    }
+    .Order{
+        margin-top: 20px;
+        font-family: 'Raleway';
+        font-style: normal;
+        font-weight: 600;
+        margin-left: 100px ;
+        background-color: #5ECE7B;
+        color: white;
+        width: 279px;
+        height: 43px;
+        font-size: 14px;
+    }
+    .Order:active{
+         background: #3da159;
+     }
+    .loading{
+        margin-left: 100px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border : 5px solid #b4fcc4;
+        border-top: 5px solid  #5ECE7B;
+        animation: animate 2s infinite linear;
+    }
+    @keyframes animate {
+        0%{
+            transform: translate(-20% , 50% ) rotate(0deg);
+        }
+        100%{
+            transform: translate(-20% , 50%) rotate(360deg);
+        }
+    }
+    .CheckOutFlex{
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+

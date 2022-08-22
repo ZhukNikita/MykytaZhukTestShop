@@ -1,0 +1,124 @@
+.ProductPage{
+    padding: 40px;
+}
+.ProductPageFlex{
+    display: flex;
+    justify-content: space-between;
+
+}
+.ProductButtons{
+    margin-top: 8px;
+}
+.fullImg{
+    height: 80%;
+    width: 80%;
+    max-width: 800px;
+    max-height:  800px;
+}
+.Imgflex{
+    display: flex;
+    flex-direction: column;
+}
+.ProductInfo{
+    font-size: 30px;
+    font-weight: bold;
+    width: 400px;
+}
+.size{
+    margin: 0;
+    margin-right: 12px;
+    border: 1px solid #1D1F22;
+    width: 63px;
+    height: 45px;
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+}
+.attribute{
+    margin: 0;
+    margin-right: 12px;
+    border: 1px solid #1D1F22;
+    width: 63px;
+    height: 45px;
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+}
+.color{
+    margin: 0;
+    margin-right: 10px;
+    padding: 0;
+    height: 32px;
+    width: 32px;
+}
+h4{
+    font-family: 'Roboto Condensed';
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+h3{
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+}
+.addToCart{
+    background: #5ECE7B;
+    width: 292px;
+    height: 52px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 32px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    color: white;
+}
+.addToCart:active{
+    background: #3da159;
+}
+.activeColor {
+    margin: 0;
+    margin-right: 10px;
+    padding: 0;
+    border: 2px solid #5ECE7B;
+    height: 36px;
+    width: 36px;
+}
+.activeSize{
+    margin: 0;
+    margin-right: 12px;
+    border: 1px solid #1D1F22;
+    width: 63px;
+    height: 45px;
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    background-color: black;
+    color: white;
+}
+.activeAttribute{
+    margin: 0;
+    margin-right: 12px;
+    border: 1px solid #1D1F22;
+    width: 63px;
+    height: 45px;
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    background-color: black;
+    color: white;
+}
+h5{
+    font-family: 'Roboto Condensed';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    margin-top: 40px;
+    text-align: justify;
+}
