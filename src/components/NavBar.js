@@ -20,6 +20,13 @@ class NavBar extends React.Component{
         })
     }
     render(){
+        let bagItems = [];
+        let y = 0
+        for (let i = 0; i < this.props.products.length; i++) {
+            let a = this.props.products[i]
+            bagItems.push(a.count)
+        }
+        let c = bagItems.map(i => y += i, y = 0).reverse()[0] ?? '0'
         return(
             <div className={bar.navbar} >
                 <ul className={bar.Categories}>
@@ -50,17 +57,20 @@ class NavBar extends React.Component{
                             <button onClick={()=>this.setCartOn()}>
                                 <img src={basket} alt="cart" height='24px' width='30px'/>
                             </button>
-                            <h5 className={bar.totalItems} style={!this.props.products?.length?{ display : 'none'}:{}}>{this.props.products?.length}</h5>
+                            <h5 className={bar.totalItems} style={!this.props.products?.length?{ display : 'none'}:{}}>{c}</h5>
                         </li>
                     </ul>
                 </div>
                 {this.state.cartIsOn && (
                     <Cart
+                        bagItems = {c}
                         products={this.props.products}
                         addProduct={this.props.addProduct}
                         removeProduct={this.props.removeProduct}
                         selector={this.props.selector}
                         CheckOut={this.props.CheckOut}
+                        Increase = {this.props.Increase}
+                        Decrease = {this.props.Decrease}
                     />
                 )}
             </div>

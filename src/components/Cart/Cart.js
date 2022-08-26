@@ -30,26 +30,25 @@ class Cart extends React.Component {
 
     render() {
         const table = {};
-        const arrayToSort = this.props.products?.filter(({name}) => (!table[name] && (table[name] = 1)));
-        const res = arrayToSort.sort();
-        let result = [];
+        const res = this.props.products?.filter(({name}) => (!table[name] && (table[name] = 1)));
+        let total = [];
         let x = 0
         for (let i = 0; i < this.props.products.length; i++) {
             let a = this.props.products[i]
-            if (this.props.selector === "USD") result.push(a.prices[0].amount)
-            if (this.props.selector === "GBP") result.push(a.prices[1].amount)
-            if (this.props.selector === "JPY") result.push(a.prices[3].amount)
-            if (this.props.selector === "RUB") result.push(a.prices[4].amount)
-            if (this.props.selector === "AUD") result.push(a.prices[2].amount)
+            if (this.props.selector === "USD") total.push((a.prices[0].amount)*(a.count))
+            if (this.props.selector === "GBP") total.push((a.prices[1].amount)*(a.count))
+            if (this.props.selector === "JPY") total.push((a.prices[3].amount)*(a.count))
+            if (this.props.selector === "RUB") total.push((a.prices[4].amount)*(a.count))
+            if (this.props.selector === "AUD") total.push((a.prices[2].amount)*(a.count))
         }
-        let b = result.map(i => x += i, x = 0).reverse()[0] ?? '0'
+        let b = total.map(i => x += i, x = 0).reverse()[0] ?? '0'
         return (
             <div className={cart.messageWrapper}>
                 <div className={cart.message}>
                     <div className={cart.Products}>
                         <h2>
                             <span style={{fontWeight: 700, fontSize: 18}}>My bag, </span>
-                            <span style={{fontWeight: 500, fontSize: 16}}>{this.props.products.length} items</span>
+                            <span style={{fontWeight: 500, fontSize: 16}}>{this.props.bagItems} items</span>
                         </h2>
                         {this.state.order}
                         {
@@ -62,6 +61,8 @@ class Cart extends React.Component {
                                     removeProduct={this.props.removeProduct}
                                     openCart={this.props.openCart}
                                     selector={this.props.selector}
+                                    Increase = {this.props.Increase}
+                                    Decrease = {this.props.Decrease}
                                 />): 'Cart is empty'
                         }
                         <div style={{

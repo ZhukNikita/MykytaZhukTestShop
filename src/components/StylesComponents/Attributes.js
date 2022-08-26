@@ -1,9 +1,6 @@
 import React  from 'react';
 
 class AttributesButton extends React.Component{
-    constructor(props) {
-        super(props);
-    }
     render(){
 
         return(

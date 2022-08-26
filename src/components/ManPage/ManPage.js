@@ -5,18 +5,20 @@ import ProductList from "../Products/ProductList";
 class ManPage extends React.Component{
     render() {
         const categories = [ '/WOMEN' , '/MAN' , "/KIDS"]
+        const {products ,  idCount , selectorChange ,  selector , Increase , CheckOut ,Decrease} = this.props
+
         return (
             <div>
                 <NavBar
                     categories={categories}
-                    removeProduct={this.props.removeProduct}
-                    addProduct={this.props.addProduct}
-                    products={this.props.products}
-                    selectorChange={this.props.selectorChange}
-                    selector={this.props.selector}
-                    CheckOut={this.props.CheckOut}
+                    Increase ={Increase}
+                    Decrease ={Decrease}
+                    products={products}
+                    selectorChange={selectorChange}
+                    selector={selector}
+                    CheckOut={CheckOut}
                 />
-                <ProductList selector={this.props.selector}  categories={'Man'} idCount={this.props.idCount}/>
+                <ProductList selector={selector}  categories={'Man'} idCount={idCount}/>
             </div>
         );
     }

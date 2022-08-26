@@ -4,7 +4,7 @@ import SizeButtons from "../StylesComponents/SizeButtons";
 import ColorButtons from "../StylesComponents/ColorButtons";
 import plus from "../../img/plus.svg"
 import minus from "../../img/minus.svg"
-import AttributesButton from "../Attributes";
+import AttributesButton from "../StylesComponents/Attributes";
 import TouchBarActive from "../StylesComponents/TouchBarActive";
 import CapacityButtons from "../StylesComponents/CapacityButtons";
 
@@ -69,11 +69,11 @@ class CartProductList extends React.Component{
                     <div className={cartList.Info}>
                         <h2 className={cartList.Title}>{this.product.name}</h2>
                         <h2 className={cartList.Title}>{this.product.brand}</h2>
-                            {this.props.selector === "USD" ? <h2 className={cartList.Price}>{`$ ` + this.product.prices[0].amount}</h2> : ''}
-                            {this.props.selector === "GBP" ? <h2 className={cartList.Price}>{`£ ` + this.product.prices[1].amount}</h2> : ''}
-                            {this.props.selector === "JPY" ? <h2 className={cartList.Price}>{`¥ ` + this.product.prices[3].amount}</h2> : ''}
-                            {this.props.selector === "RUB" ? <h2 className={cartList.Price}>{`₽ ` + this.product.prices[4].amount}</h2> : ''}
-                            {this.props.selector === "AUD" ? <h2 className={cartList.Price}>{`$ ` +  this.product.prices[2].amount}</h2> : ''}
+                            {this.props.selector === "USD" ? <h2 className={cartList.Price}>{`$ ` + (this.product.prices[0].amount).toFixed(2)}</h2> : ''}
+                            {this.props.selector === "GBP" ? <h2 className={cartList.Price}>{`£ ` + (this.product.prices[1].amount).toFixed(2)}</h2> : ''}
+                            {this.props.selector === "JPY" ? <h2 className={cartList.Price}>{`¥ ` + (this.product.prices[3].amount).toFixed(2)}</h2> : ''}
+                            {this.props.selector === "RUB" ? <h2 className={cartList.Price}>{`₽ ` + (this.product.prices[4].amount).toFixed(2)}</h2> : ''}
+                            {this.props.selector === "AUD" ? <h2 className={cartList.Price}>{`$ ` +  (this.product.prices[2].amount).toFixed(2)}</h2> : ''}
                         <div>
                             {this.product.attributes.map((name)=>
                                 <div key={name.name}>
@@ -149,11 +149,11 @@ class CartProductList extends React.Component{
                         </div>
                     </div>
                     <div className={cartList.TotalProduct}>
-                        <button className={cartList.buttons} onClick={()=>this.props.addProduct(this.product)}>
+                        <button className={cartList.buttons} onClick={()=>this.props.Increase(this.product.id)}>
                             <img src={plus} alt="add" width={10} height={10}/>
                         </button>
-                        <h4 className={cartList.total}>{result[this.product.name]}</h4>
-                        <button className={cartList.buttons} onClick={()=>this.props.removeProduct(this.product)}>
+                        <h4 className={cartList.total}>{this.product.count}</h4>
+                        <button className={cartList.buttons} onClick={()=>this.props.Decrease(this.product.id)}>
                             <img src={minus} alt="add" width={10} height={10}/>
                         </button>
                     </div>

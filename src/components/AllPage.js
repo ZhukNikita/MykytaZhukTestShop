@@ -4,30 +4,26 @@ import NavBar from "./NavBar";
 import ProductList from "./Products/ProductList";
 
 class AllPage extends React.Component{
-    constructor(props) {
-        super(props);
-        this.idCount = this.props.idCount;
-        this.setCategories = this.props.setCategories;
-    }
     render(){
+        const {selector , products , CheckOut , selectorChange , Increase , Decrease , idCount , setCategories} = this.props
         const categories = [ '/TECH' , '/CLOTHES']
         return(
             <div>
                 <NavBar
                     categories={categories}
-                    removeProduct={this.props.removeProduct}
-                    addProduct={this.props.addProduct}
-                    products={this.props.products}
-                    selectorChange={this.props.selectorChange}
-                    selector={this.props.selector}
-                    CheckOut={this.props.CheckOut}
+                    products={products}
+                    selectorChange={selectorChange}
+                    selector={selector}
+                    CheckOut={CheckOut}
+                    Increase ={Increase}
+                    Decrease ={Decrease}
                 />
                 <ProductList
-                    selector={this.props.selector}
+                    selector={selector}
                     categories={'All'}
-                    idCount={this.idCount}
-                    setCategories={this.props.setCategories}
-                    categoriesProduct={this.props.categories}/>
+                    idCount={idCount}
+                    setCategories={setCategories}
+                />
             </div>
         )
     }

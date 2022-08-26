@@ -3,28 +3,25 @@ import '../App.css';
 import NavBar from "./NavBar";
 import ProductList from "./Products/ProductList";
 
-class Tech extends React.Component{
-    constructor(props) {
-        super(props);
-        this.idCount = this.props.idCount;
-    }
-
+class ClothePage extends React.Component{
     render(){
         const categories = [ '/WOMEN' , '/MAN' , "/KIDS"]
+        const {products , idCount  , selectorChange ,  selector , Increase , CheckOut ,Decrease} = this.props
+
         return(
             <div>
                 <NavBar
                     categories={categories}
-                    removeProduct={this.props.removeProduct}
-                    addProduct={this.props.addProduct}
-                    products={this.props.products}
-                    selectorChange={this.props.selectorChange}
-                    selector={this.props.selector}
-                    CheckOut={this.props.CheckOut}
+                    products={products}
+                    selectorChange={selectorChange}
+                    selector={selector}
+                    CheckOut={CheckOut}
+                    Increase ={Increase}
+                    Decrease ={Decrease}
                 />
-                <ProductList selector={this.props.selector}  categories={'Clothes'} idCount={this.idCount}/>
+                <ProductList selector={selector}  categories={'Clothes'} idCount={idCount}/>
             </div>
         )
     }
 }
-export default Tech
+export default ClothePage

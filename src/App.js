@@ -19,12 +19,13 @@ class App extends React.Component {
             Products: [],
             selector: 'USD',
             category: '',
-            Jacket: []
         }
         this.idCount = this.idCount.bind(this)
         this.addProduct = this.addProduct.bind(this)
         this.removeProduct = this.removeProduct.bind(this)
         this.selectorChange = this.selectorChange.bind(this)
+        this.Increase = this.Increase.bind(this)
+        this.Decrease = this.Decrease.bind(this)
     }
 
     selectorChange(e) {
@@ -32,17 +33,15 @@ class App extends React.Component {
     };
 
     addProduct(arr) {
-        this.setState({Products: [ ...this.state.Products , arr  ]})
+        this.setState({Products: [...this.state.Products, arr]})
         localStorage.setItem('products', JSON.stringify(this.state.Products))
     }
 
-    removeProduct(item) {
-        let index = this.state.Products.indexOf(item)
-        const newTracker = [...this.state.Products]
-        newTracker.splice(index, 1)
-        this.setState({
-            Products: newTracker
+    removeProduct(id) {
+        let removeProduct = this.state.Products.filter((product) => {
+            return id !== product.id
         })
+        this.setState({Products: removeProduct})
     }
 
     idCount(id, photo, category) {
@@ -76,6 +75,29 @@ class App extends React.Component {
         })
     }
 
+    Increase(id) {
+        const products = this.state.Products.slice();
+        products.forEach((product) => {
+            if (product.id === id) {
+                product.count = ++product.count;
+            }
+        });
+        this.setState({products});
+    }
+
+    Decrease(id) {
+        const products = this.state.Products.slice();
+        products.forEach((product) => {
+            if (product.id === id) {
+                product.count = product.count - 1;
+            }
+            if (product.count === 0) {
+                this.removeProduct(id)
+            }
+        });
+        this.setState({products});
+    }
+
     render() {
         return (
             <div className="App">
@@ -88,6 +110,9 @@ class App extends React.Component {
                                 idCount={this.idCount}
                                 selectorChange={this.selectorChange}
                                 CheckOut={this.CheckOut.bind(this)}
+                                addProduct={this.addProduct}
+                                Increase={this.Increase}
+                                Decrease={this.Decrease}
                             />}>
                         </Route>
                         <Route path="/TECH" element={
@@ -97,6 +122,9 @@ class App extends React.Component {
                                 idCount={this.idCount}
                                 selectorChange={this.selectorChange}
                                 CheckOut={this.CheckOut.bind(this)}
+                                addProduct={this.addProduct}
+                                Increase={this.Increase}
+                                Decrease={this.Decrease}
                             />}>
                         </Route>
                         <Route path="/CLOTHES" element={
@@ -106,6 +134,9 @@ class App extends React.Component {
                                 idCount={this.idCount}
                                 selectorChange={this.selectorChange}
                                 CheckOut={this.CheckOut.bind(this)}
+                                addProduct={this.addProduct}
+                                Increase={this.Increase}
+                                Decrease={this.Decrease}
                             />}>
                         </Route>
                         <Route path="/Product" element={
@@ -117,8 +148,9 @@ class App extends React.Component {
                                 id={this.state.id}
                                 category={this.state.category}
                                 addProduct={this.addProduct}
-                                removeProduct={this.removeProduct}
                                 CheckOut={this.CheckOut.bind(this)}
+                                Increase={this.Increase}
+                                Decrease={this.Decrease}
                             />}>
                         </Route>
                         <Route path="/CartPage" element={
@@ -127,10 +159,9 @@ class App extends React.Component {
                                 selector={this.state.selector}
                                 idCount={this.idCount}
                                 selectorChange={this.selectorChange}
-                                id={this.state.id}
-                                addProduct={this.addProduct}
-                                removeProduct={this.removeProduct}
                                 CheckOut={this.CheckOut.bind(this)}
+                                Increase={this.Increase}
+                                Decrease={this.Decrease}
                             />}>
                         </Route>
                         <Route path="/WOMEN" element={
@@ -140,6 +171,8 @@ class App extends React.Component {
                                 idCount={this.idCount}
                                 selectorChange={this.selectorChange}
                                 CheckOut={this.CheckOut.bind(this)}
+                                Increase={this.Increase}
+                                Decrease={this.Decrease}
                             />}>
                         </Route>
                         <Route path="/MAN" element={
@@ -149,6 +182,8 @@ class App extends React.Component {
                                 idCount={this.idCount}
                                 selectorChange={this.selectorChange}
                                 CheckOut={this.CheckOut.bind(this)}
+                                Increase={this.Increase}
+                                Decrease={this.Decrease}
                             />}>
                         </Route>
                         <Route path="/KIDS" element={
@@ -158,6 +193,8 @@ class App extends React.Component {
                                 idCount={this.idCount}
                                 selectorChange={this.selectorChange}
                                 CheckOut={this.CheckOut.bind(this)}
+                                Increase={this.Increase}
+                                Decrease={this.Decrease}
                             />}>
                         </Route>
                         <Route path="*" element={<NoMatch/>}></Route>

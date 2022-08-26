@@ -1,7 +1,7 @@
 import React from "react";
 import cartPage from '../CssModules/CartPage.module.css'
 import CapacityButtons from "../StylesComponents/CapacityButtons";
-import AttributesButton from "../Attributes";
+import AttributesButton from "../StylesComponents/Attributes";
 import TouchBarActive from "../StylesComponents/TouchBarActive";
 import ColorButtons from "../StylesComponents/ColorButtons";
 import SizeButtons from "../StylesComponents/SizeButtons";
@@ -14,7 +14,6 @@ class CartProductItem extends React.Component {
         super(props);
         this.product = this.props.product
         this.state = {
-            img: '',
             activeColor: this.product.activeColor,
             activeSize: this.product.activeSize,
             activeAttributes: this.product.activeAttributes,
@@ -158,11 +157,11 @@ class CartProductItem extends React.Component {
                     </div>
                     <div className={cartPage.TotalProduct}>
                         <div className={cartPage.TotalButtons}>
-                            <button className={cartPage.buttons} onClick={() => this.props.addProduct(this.product)}>
+                            <button className={cartPage.buttons} onClick={() => this.props.Increase(this.product.id)}>
                                 <img src={plus} alt="add" width={15} height={15}/>
                             </button>
-                            <h4 className={cartPage.total}>{result[this.product.name]}</h4>
-                            <button className={cartPage.buttons} onClick={() => this.props.removeProduct(this.product)}>
+                            <h4 className={cartPage.total}>{this.product.count}</h4>
+                            <button className={cartPage.buttons} onClick={() => this.props.Decrease(this.product.id)}>
                                 <img src={minus} alt="add" width={15} height={15}/>
                             </button>
                         </div>

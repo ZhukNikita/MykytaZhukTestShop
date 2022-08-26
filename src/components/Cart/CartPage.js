@@ -13,7 +13,6 @@ class CartPage extends React.Component {
 
     Order() {
         this.setState({
-
             order: <div>
                 <div className={cartPage.loading}></div>
                 <h4 style={{marginLeft: '150px'}}><p>Waiting for bank response</p></h4>
@@ -36,40 +35,40 @@ class CartPage extends React.Component {
     }
 
     render() {
-        let result = [];
+        let quantity = []
+        let total = [];
         let x = 0
         for (let i = 0; i < this.props.products.length; i++) {
             let a = this.props.products[i]
-            if (this.props.selector === "USD") result.push(a.prices[0].amount)
-            if (this.props.selector === "GBP") result.push(a.prices[1].amount)
-            if (this.props.selector === "JPY") result.push(a.prices[3].amount)
-            if (this.props.selector === "RUB") result.push(a.prices[4].amount)
-            if (this.props.selector === "AUD") result.push(a.prices[2].amount)
+            if (this.props.selector === "USD") total.push((a.prices[0].amount)*(a.count))
+            if (this.props.selector === "GBP") total.push((a.prices[1].amount)*(a.count))
+            if (this.props.selector === "JPY") total.push((a.prices[3].amount)*(a.count))
+            if (this.props.selector === "RUB") total.push((a.prices[4].amount)*(a.count))
+            if (this.props.selector === "AUD") total.push((a.prices[2].amount)*(a.count))
+            quantity.push(a.count)
         }
-        let b = result.map(i => x += i, x = 0).reverse()[0] ?? '0'
-        const table = {};
-        const res = this.props.products?.filter(({name}) => (!table[name] && (table[name] = 1)));
-        let tax = b > 1 ? b / 100 * 21 : 0
+        let TotalPrice = total.map(i => x += i, x = 0).reverse()[0] ?? '0'
+        let TotalQuantity = quantity.map(i => x += i, x = 0).reverse()[0] ?? '0'
+        let tax = TotalPrice > 1 ? TotalPrice / 100 * 21 : 0
         return (
             <div>
                 <NavBar
                     products={this.props.products}
-                    id={this.props.id}
                     categories={['/TECH', '/CLOTHES']}
-                    addProduct={this.props.addProduct}
-                    removeProduct={this.props.removeProduct}
                     selectorChange={this.props.selectorChange}
                     selector={this.props.selector}
+                    Increase ={this.props.Increase}
+                    Decrease ={this.props.Decrease}
                 />
                 <h2 className={cartPage.Page}>CART</h2>
                 {
-                    res.map((product) =>
+                    this.props.products.map((product) =>
                     <CartProductItem
                         key={product.id}
                         product={product}
                         products={this.props.products}
-                        addProduct={this.props.addProduct}
-                        removeProduct={this.props.removeProduct}
+                        Increase ={this.props.Increase}
+                        Decrease ={this.props.Decrease}
                         selector={this.props.selector}
                     />
                 )}
@@ -90,7 +89,7 @@ class CartPage extends React.Component {
                             <div className={cartPage.TotalPrice}>
                                 <h2>Quantity:</h2>
                                 <h2 style={{fontWeight: 700}}>
-                                    {this.props.products.length}
+                                    {TotalQuantity}
                                 </h2>
                             </div>
                             <div className={cartPage.TotalPrice}>
@@ -101,7 +100,7 @@ class CartPage extends React.Component {
                                     {this.props.selector === 'JPY' ? '¥' : ''}
                                     {this.props.selector === 'RUB' ? '₽' : ''}
                                     {this.props.selector === 'AUD' ? '$' : ''}
-                                    {b > 1 ? b.toFixed(2) : b}
+                                    {TotalPrice > 1 ? TotalPrice.toFixed(2) : TotalPrice}
                                 </h2>
                             </div>
                             <button className={cartPage.Order} onClick={this.Order.bind(this)}>ORDER</button>

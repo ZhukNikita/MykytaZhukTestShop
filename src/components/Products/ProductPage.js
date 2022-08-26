@@ -5,7 +5,7 @@ import {ALL_CARDS} from "../../apollo/cards";
 import product from "../CssModules/ProductPage.module.css"
 import SizeButtons from "../StylesComponents/SizeButtons";
 import ColorButtons from "../StylesComponents/ColorButtons";
-import AttributesButton from "../Attributes";
+import AttributesButton from "../StylesComponents/Attributes";
 import TouchBarActive from "../StylesComponents/TouchBarActive";
 
 
@@ -23,7 +23,6 @@ class ProductPage extends React.Component{
             color: '',
             touchbar: '',
             usbPort: '',
-
         }
         this.setActiveColors = this.setActiveColors.bind(this)
         this.setActiveSizes = this.setActiveSizes.bind(this)
@@ -68,33 +67,36 @@ class ProductPage extends React.Component{
     }
     render() {
         const categories = [ '/TECH' , '/CLOTHES']
+        const { id , addProduct , selectorChange ,  selector , Increase , CheckOut ,Decrease ,category} = this.props
         return(
             <div className='Page'>
                 <NavBar
                     products={this.props.products}
-                    id ={this.props.id}
+                    id ={id}
                     categories={categories}
-                    addProduct={this.props.addProduct}
-                    removeProduct={this.props.removeProduct}
-                    selectorChange={this.props.selectorChange}
-                    selector={this.props.selector }
-                    CheckOut={this.props.CheckOut}
+                    addProduct={addProduct}
+                    selectorChange={selectorChange}
+                    selector={selector }
+                    CheckOut={CheckOut}
+                    Increase ={Increase}
+                    Decrease ={Decrease}
                 />
                 <Query query = {ALL_CARDS}>
                     {
                         ({loading  , data}) =>{
                             if(loading) return ''
-                            let products
-                            if(this.props.category === "ALL") products = data.categories[0].products[this.props.id]
-                            if(this.props.category === "CLOTHES") products = data.categories[1].products[this.props.id]
-                            if(this.props.category === "TECH") products = data.categories[2].products[this.props.id]
+                            let products = []
+                            if(category === "ALL") products = data.categories[0].products[id]
+                            if(category === "CLOTHES") products = data.categories[1].products[id]
+                            if(category === "TECH") products = data.categories[2].products[id]
                             const arr = {
                                 id : Date.now(),
-                                name : products.name,
-                                brand : products.brand,
-                                gallery: products.gallery,
-                                attributes : products.attributes,
-                                prices : products.prices,
+                                count: 1 ,
+                                name : products?.name,
+                                brand : products?.brand,
+                                gallery: products?.gallery,
+                                attributes : products?.attributes,
+                                prices : products?.prices,
                                 activeAttributes: this.state.activeAttributes,
                                 activeButton :this.state.activeButton,
                                 activeColor: this.state.activeColor,
@@ -105,7 +107,7 @@ class ProductPage extends React.Component{
                                     <div className={product.ProductPageFlex}>
                                         <div className={product.Imgflex}>
                                             {
-                                                products.gallery.map((item , index)=>
+                                                products?.gallery.map((item , index)=>
                                                 <div onClick={()=>this.setImg(item)} key={index}>
                                                     <img src={item} alt='ShowProduct' height={80} width={80} />
                                                 </div>
@@ -116,9 +118,9 @@ class ProductPage extends React.Component{
                                             {this.state.img}
                                         </div>
                                         <div className={product.ProductInfo}>
-                                            <h2>{products.name}</h2>
-                                            <h2 style={{fontWeight: 500}}>{products.brand}</h2>
-                                            {products.attributes.map((name)=>
+                                            <h2>{products?.name}</h2>
+                                            <h2 style={{fontWeight: 500}}>{products?.brand}</h2>
+                                            {products?.attributes.map((name)=>
                                                 <div key={name.name}>
                                                     <br/>
                                                     <h4>{(name.name).toUpperCase()}:</h4>
@@ -193,24 +195,29 @@ class ProductPage extends React.Component{
                                             )}
                                             <br/>
                                             <h4>PRICE:</h4>
-                                            {this.props.selector === "USD" ? <h3>{`$ ` +  products.prices[0].amount}</h3> : ''}
-                                            {this.props.selector === "GBP" ? <h3>{`£ ` + products.prices[1].amount}</h3> : ''}
-                                            {this.props.selector === "JPY" ? <h3>{`¥ ` +  products.prices[3].amount}</h3> : ''}
-                                            {this.props.selector === "RUB" ? <h3>{`₽ ` +  products.prices[4].amount}</h3> : ''}
-                                            {this.props.selector === "AUD" ? <h3>{`$ ` +  products.prices[2].amount}</h3> : ''}
+                                            {selector === "USD" ? <h3>{`$ ` +  products?.prices[0].amount}</h3> : ''}
+                                            {selector === "GBP" ? <h3>{`£ ` + products?.prices[1].amount}</h3> : ''}
+                                            {selector === "JPY" ? <h3>{`¥ ` +  products?.prices[3].amount}</h3> : ''}
+                                            {selector === "RUB" ? <h3>{`₽ ` +  products?.prices[4].amount}</h3> : ''}
+                                            {selector === "AUD" ? <h3>{`$ ` +  products?.prices[2].amount}</h3> : ''}
                                             <br/>
                                             {
-                                                products.attributes[0] === undefined ?
-                                                    <button className={product.addToCart} onClick={()=>this.props.addProduct(arr)}>ADD TO CART</button>:
+
+                                                !this.props.products.find(item => item.name === arr.name) && (products?.attributes[0] === undefined ?
+                                                    <button className={product.addToCart} onClick={()=>addProduct(arr)}>ADD TO CART</button>:
                                                     (this.state.size === '') ?
                                                     <button className={product.addToCart} style={{background: "grey"}}
-                                                            onClick={()=> this.setState({message: `Choose any ${(products.attributes[0].name).toLowerCase()} please`})}>
+                                                            onClick={()=> this.setState({message: `Choose any ${(products?.attributes[0].name).toLowerCase()} please`})}>
                                                         ADD TO CART
                                                     </button>
-                                                    : <button className={product.addToCart} onClick={()=>this.props.addProduct(arr)}>ADD TO CART</button>
+                                                    : <button className={product.addToCart} onClick={()=>addProduct(arr)}>ADD TO CART</button>) ||
+                                                <button className={product.addToCart} style={{background: "grey"}}
+                                                        onClick={()=> this.setState({message: `Already in your cart`})}>
+                                                    ADD TO CART
+                                                </button>
                                             }
-                                            <h5 style={{marginLeft: 90 , color: 'red'}}>{this.state.message}</h5>
-                                            <h5>{products.description.replace(/(\<(\/?[^>]+)>)/g, '')}</h5>
+                                            <h5 style={{marginLeft: 100 , color: 'red'}}>{this.state.message}</h5>
+                                            <h5>{products?.description.replace(/(\<(\/?[^>]+)>)/g, '')}</h5>
                                         </div>
                                     </div>
                                 </div>)
