@@ -1,11 +1,6 @@
-import product from "../CssModules/ProductPage.module.css"
-
 import React  from 'react';
 
 class SizeButtons extends React.Component{
-    constructor(props) {
-        super(props);
-    }
     render(){
 
         return(

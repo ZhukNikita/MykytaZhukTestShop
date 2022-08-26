@@ -48,8 +48,7 @@
 .ViewBag h2{
     width: 68px;
     height: 17px;
-
-    font-family: 'Raleway';
+    font-family: 'Raleway' ;
     font-style: normal;
     font-weight: 600;
     font-size: 14px;

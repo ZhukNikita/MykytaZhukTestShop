@@ -6,7 +6,6 @@ import plus from "../../img/plus.svg"
 import minus from "../../img/minus.svg"
 import AttributesButton from "../StylesComponents/Attributes";
 import TouchBarActive from "../StylesComponents/TouchBarActive";
-import CapacityButtons from "../StylesComponents/CapacityButtons";
 
 class CartProductList extends React.Component{
     constructor(props) {
@@ -22,7 +21,6 @@ class CartProductList extends React.Component{
             color: '',
             touchbar: '',
             usbPort: '',
-
         }
 
         this.setActiveColors = this.setActiveColors.bind(this)
@@ -54,7 +52,6 @@ class CartProductList extends React.Component{
             size : name,
             activeSize : name,
         })
-
     }
     render(){
         let arr = this.props.products;
@@ -82,7 +79,7 @@ class CartProductList extends React.Component{
                                         {
                                             name.name === 'Capacity' &&
                                             (name.items.map(value=>
-                                                <CapacityButtons
+                                                <SizeButtons
                                                     key={value.value}
                                                     name={value.value}
                                                     style={cartList}

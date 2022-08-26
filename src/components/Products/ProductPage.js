@@ -52,7 +52,6 @@ class ProductPage extends React.Component{
             activeSize : name,
             message : ''
         })
-
     }
     setImg(photo){
         this.setState({
@@ -107,7 +106,7 @@ class ProductPage extends React.Component{
                                     <div className={product.ProductPageFlex}>
                                         <div className={product.Imgflex}>
                                             {
-                                                products?.gallery.map((item , index)=>
+                                                products?.gallery?.map((item , index)=>
                                                 <div onClick={()=>this.setImg(item)} key={index}>
                                                     <img src={item} alt='ShowProduct' height={80} width={80} />
                                                 </div>
@@ -120,7 +119,7 @@ class ProductPage extends React.Component{
                                         <div className={product.ProductInfo}>
                                             <h2>{products?.name}</h2>
                                             <h2 style={{fontWeight: 500}}>{products?.brand}</h2>
-                                            {products?.attributes.map((name)=>
+                                            {products?.attributes?.map((name)=>
                                                 <div key={name.name}>
                                                     <br/>
                                                     <h4>{(name.name).toUpperCase()}:</h4>

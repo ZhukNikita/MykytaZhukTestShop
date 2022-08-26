@@ -1,6 +1,5 @@
 import React from "react";
-import cartPage from '../CssModules/CartPage.module.css'
-import CapacityButtons from "../StylesComponents/CapacityButtons";
+import cartPage from '../CssModules/CartPage.module.css';
 import AttributesButton from "../StylesComponents/Attributes";
 import TouchBarActive from "../StylesComponents/TouchBarActive";
 import ColorButtons from "../StylesComponents/ColorButtons";
@@ -89,7 +88,7 @@ class CartProductItem extends React.Component {
                                         {
                                             name.name === 'Capacity' &&
                                             (name.items.map(value =>
-                                                <CapacityButtons
+                                                <SizeButtons
                                                     key={value.value}
                                                     name={value.value}
                                                     style={cartPage}
