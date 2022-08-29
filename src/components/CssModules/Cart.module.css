@@ -69,3 +69,28 @@
 .CheckOut:active{
     background: #3da159;
 }
+@media screen and (min-width: 700px) {
+    @media screen and (max-width: 1200px){
+        .message{
+            width: 50%;
+            right: 20px;
+        }
+        .order{
+            display: none;
+        }
+    }
+}
+@media screen and (max-width: 414px){
+    .messageWrapper{
+        width: 100%;
+        position: absolute;
+    }
+    .message{
+        width: 100%;
+        right: 0px;
+    }
+    .order{
+        display: none;
+    }
+}
+

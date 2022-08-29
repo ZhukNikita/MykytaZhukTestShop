@@ -14,7 +14,7 @@ class Cart extends React.Component {
     Order() {
         this.setState({
             order:
-                <div>
+                <div className={cart.order}>
                     <h1 style={{
                         color: '#5ECE7B',
                         fontFamily: 'Raleway',

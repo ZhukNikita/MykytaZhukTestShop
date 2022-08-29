@@ -113,9 +113,7 @@ class ProductPage extends React.Component{
                                                 )
                                             }
                                         </div>
-                                        <div>
                                             {this.state.img}
-                                        </div>
                                         <div className={product.ProductInfo}>
                                             <h2>{products?.name}</h2>
                                             <h2 style={{fontWeight: 500}}>{products?.brand}</h2>

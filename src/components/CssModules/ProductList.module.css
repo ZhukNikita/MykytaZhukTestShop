@@ -11,3 +11,12 @@ h1{
     font-weight: 400;
     font-size: 42px;
 }
+ @media screen and ( max-width: 400px) {
+     .List{
+         flex-direction: row;
+         margin: 0 auto;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+     }
+ }

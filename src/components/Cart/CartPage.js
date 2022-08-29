@@ -15,7 +15,7 @@ class CartPage extends React.Component {
         this.setState({
             order: <div>
                 <div className={cartPage.loading}></div>
-                <h4 style={{marginLeft: '150px'}}><p>Waiting for bank response</p></h4>
+                <h4 className={cartPage.successful} style={{marginLeft: '150px'} }><p>Waiting for bank response</p></h4>
             </div>
         })
         if (this.props.products.length === 0) {
@@ -24,7 +24,7 @@ class CartPage extends React.Component {
             setTimeout(() => {
                 this.setState({
                     order:
-                        <div>
+                        <div className={cartPage.successful}>
                             <h1 style={{color: '#5ECE7B', fontFamily: 'Raleway', marginLeft: '150px'}}>Successful</h1>
                             <h3 style={{color: '#5ECE7B', fontFamily: 'Raleway', marginLeft: '150px'}}>Thank You</h3>
                         </div>

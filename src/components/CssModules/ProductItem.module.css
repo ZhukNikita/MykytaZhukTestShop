@@ -40,12 +40,39 @@
 
 @media  screen and ( max-width: 500px) {
     .ProductItem{
-        width: 386px;
+        width: 80%;
+        height: 80%;
+        margin: 25px;
+    }
+    .ProductItem img {
+        width: 270px;
+        height: 270px;
+    }
+    .ProductTitle{
+        width: 80%;
+    }
+    .stock{
+        height: 0;
+        width: 100%;
+        position: relative;
+        font-size: 30px;
+        font-weight: 300;
+        transform: translate(23%,100px)
     }
 }
-@media  screen and ( max-width: 1200px) {
+@media  screen and (min-width: 700px) {
+    @media  screen and (max-width: 1200px) {
     .ProductItem{
-        width: 386px;
+        width: 30%;
+        height: 40%;
         margin: 25px;
+    }
+    .ProductItem img {
+        width: 270px;
+        height: 270px;
+    }
+    .ProductTitle{
+        width: 80%;
+    }
     }
 }
