@@ -1,8 +1,8 @@
 import React from "react";
 import './App.css';
-import {BrowserRouter, HashRouter, Route, Routes} from "react-router-dom";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 import AllPage from "./components/AllPage";
-import {NoMatch} from "./components/NoMatch";
+import NoMatch from "./components/NoMatch";
 import TechPage from "./components/TechPage";
 import ClothesPage from "./components/ClothesPage";
 import ProductPage from "./components/Products/ProductPage";
